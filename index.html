@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Una pregunta importante...</title>
+
+    <style>
+      .principal {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .imagen {
+        margin: 0 auto;
+        justify-items: center;
+      }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+        text-align: center;
+        margin: 0;
+        padding: 20px;
+        background-color: #ffe6e6;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      h1 {
+        font-size: 1.8em;
+        margin-top: 60px;
+      }
+
+      .container {
+        position: relative;
+        margin-top: 80px;
+        height: 300px;
+      }
+
+      .btn {
+        padding: 15px 25px;
+        font-size: 18px;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        position: absolute;
+        transition: all 0.2s ease;
+      }
+
+      #yes {
+        background-color: #4caf50;
+        color: white;
+        left: 25%;
+        transform: translateX(-50%);
+      }
+
+      #no {
+        background-color: #f44336;
+        color: white;
+        right: 25%;
+        transform: translateX(50%);
+      }
+
+      #mensaje {
+        display: none;
+        font-size: 2em;
+        margin-top: 100px;
+        color: #333;
+      }
+    </style>
+  </head>
+
+  <body class="principal">
+    <img
+      class="imagen"
+      width="120px"
+      src="https://preview.redd.it/cute-white-cats-who-hide-their-real-intentions-behind-their-v0-j94wfnxj5cmc1.jpeg?width=640&crop=smart&auto=webp&s=d9fb685cf5d050e6e6c9831818a40c808f653c28"
+      alt=""
+    />
+    <h1>¿Quieres salir conmigo algún día?</h1>
+
+    <div class="container">
+      <button id="yes" class="btn">Sí</button>
+      <button id="no" class="btn">No</button>
+    </div>
+
+    <div id="mensaje">
+      <img
+        src="https://i.pinimg.com/originals/e0/19/17/e0191785c29396e42bccc19c6c3db098.jpg"
+        alt=""
+      />
+      <br />
+      Ya lo sabía 😏
+    </div>
+
+    <script>
+      const noBtn = document.getElementById("no");
+      const yesBtn = document.getElementById("yes");
+
+      function moverBoton() {
+        const container = document.querySelector(".container");
+        const maxX = container.clientWidth - noBtn.clientWidth;
+        const maxY = container.clientHeight - noBtn.clientHeight;
+
+        const x = Math.random() * maxX;
+        const y = Math.random() * maxY;
+
+        noBtn.style.left = x + "px";
+        noBtn.style.top = y + "px";
+      }
+
+      // Para iPhone (touch)
+      noBtn.addEventListener("touchstart", moverBoton);
+
+      // También para desktop
+      noBtn.addEventListener("mouseover", moverBoton);
+
+      yesBtn.addEventListener("click", () => {
+        document.body.innerHTML = `
+         <img src="https://i.pinimg.com/originals/e0/19/17/e0191785c29396e42bccc19c6c3db098.jpg" w>
+        <h1 style="margin-top:50px;">Ya lo sabía 😏</h1>
+      `;
+      });
+    </script>
+  </body>
+</html>
